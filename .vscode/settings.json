@@ -1,6 +1,7 @@
 {
   "C_Cpp.errorSquiggles": "Disabled",
   "files.associations": {
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "string": "cpp"
   }
 }
