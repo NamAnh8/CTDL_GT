@@ -6,13 +6,13 @@
 #include <set>
 #include <algorithm>
 #include <cstring>
+#include <queue>
 #define ll long long
 using namespace std;
-int n, m, u, v;
+int n, m;
 vector<int> adj[1005];
 bool check[1005];
-int parent[1005];
-void in()
+void init()
 {
     for (int i = 0; i < 1005; i++)
     {
@@ -27,43 +27,39 @@ void in()
         adj[y].push_back(x);
     }
     memset(check, false, sizeof(check));
-    memset(parent, 0, sizeof(parent));
 }
-void dfs(int u)
+void bfs(int u)
 {
+    queue<int> q;
     check[u] = true;
-    for (auto x : adj[u])
+    q.push(u);
+    while (q.size() > 0)
     {
-        if (!check[x])
+        int v = q.front();
+        q.pop();
+        for (auto x : adj[v])
         {
-            parent[x] = u;
-            dfs(x);
+            if (!check[x])
+            {
+                check[x] = true;
+                q.push(x);
+            }
         }
-    }
-}
-void Path(int u, int v)
-{
-    dfs(u);
-    if (!check[v])
-    {
-        cout << "NO";
-    }
-    else
-    {
-        cout << "YES";
     }
 }
 void run_test_case()
 {
-    in();
-    int pos;
-    cin >> pos;
-    while (pos--)
+    init();
+    int cnt = 0;
+    for (int i = 1; i <= n; i++)
     {
-        cin >> u >> v;
-        Path(u, v);
-        cout << endl;
+        if (!check[i])
+        {
+            cnt++;
+            bfs(i);
+        }
     }
+    cout << cnt << endl;
 }
 int main()
 {

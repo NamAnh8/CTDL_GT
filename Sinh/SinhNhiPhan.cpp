@@ -43,8 +43,8 @@ void run_test_case()
         {
             cout << a[i] << " ";
         }
-        sinh();
         cout << endl;
+        sinh();
     }
 }
 int main()

@@ -5,7 +5,6 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include <map>
 #define ll long long
 using namespace std;
 
@@ -14,25 +13,26 @@ void run_test_case()
     int n;
     cin >> n;
     int a[n + 5];
-    map<int, int> mp;
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        mp[a[i]]++;
     }
-    int check = 0;
+    stack<int> st;
     for (int i = 0; i < n; i++)
     {
-        if (mp[a[i]] > 1)
+        while (st.size() > 0 && a[i] >= a[st.top()])
         {
-            cout << a[i];
-            check = 1;
-            break;
+            st.pop();
         }
-    }
-    if (!check)
-    {
-        cout << "NO";
+        if (st.size() > 0)
+        {
+            cout << i - st.top() << " ";
+        }
+        else
+        {
+            cout << i + 1 << " ";
+        }
+        st.push(i);
     }
     cout << endl;
 }

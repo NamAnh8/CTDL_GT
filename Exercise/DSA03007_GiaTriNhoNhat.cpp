@@ -5,36 +5,33 @@
 #include <vector>
 #include <set>
 #include <algorithm>
-#include <map>
 #define ll long long
 using namespace std;
-
 void run_test_case()
 {
-    int n;
+    ll n;
     cin >> n;
-    int a[n + 5];
-    map<int, int> mp;
+    vector<ll> a;
+    a.resize(n);
+    vector<ll> b;
+    b.resize(n);
     for (int i = 0; i < n; i++)
     {
         cin >> a[i];
-        mp[a[i]]++;
     }
-    int check = 0;
     for (int i = 0; i < n; i++)
     {
-        if (mp[a[i]] > 1)
-        {
-            cout << a[i];
-            check = 1;
-            break;
-        }
+        cin >> b[i];
     }
-    if (!check)
+    sort(a.begin(), a.end());
+    sort(b.begin(), b.end());
+    reverse(b.begin(), b.end());
+    ll sum = 0;
+    for (int i = 0; i < n; i++)
     {
-        cout << "NO";
+        sum += a[i] * b[i];
     }
-    cout << endl;
+    cout << sum << endl;
 }
 int main()
 {

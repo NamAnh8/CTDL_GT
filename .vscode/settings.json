@@ -1,8 +1,10 @@
 {
-  "C_Cpp.errorSquiggles": "Disabled",
+  "C_Cpp.errorSquiggles": "Enabled",
   "files.associations": {
     "xutility": "cpp",
     "string": "cpp",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "queue": "cpp",
+    "iostream": "cpp"
   }
 }
